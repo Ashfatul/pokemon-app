@@ -1,9 +1,5 @@
 import Card from "./Card";
 import PokemonDetails from "./PokemonDetails/[PokemonID]";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import "owl.carousel/dist/owl.carousel.js";
 import Script from "next/script";
 export default function Overview() {
   return (
@@ -13,7 +9,7 @@ export default function Overview() {
           <div className="logoContainer">
             <img src="/Logo/Logo.png" alt="" />
           </div>
-          <OwlCarousel className="cardContainer owl-theme" items={5}>
+          <div className="cardContainer">
             <Card />
             <Card />
             <Card />
@@ -24,7 +20,7 @@ export default function Overview() {
             <Card />
             <Card />
             <Card />
-          </OwlCarousel>
+          </div>
         </div>
       </div>
 

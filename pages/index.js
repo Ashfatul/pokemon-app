@@ -1,11 +1,6 @@
 import Head from "next/head";
 
 import dynamic from "next/dynamic";
-import Script from "next/script";
-
-// dynamic(() => import("../node_modules/owl.carousel/dist/owl.carousel"), {
-//   ssr: false,
-// });
 const Overview = dynamic(() => import("./Overview"), { ssr: false });
 
 export default function Home() {
@@ -17,12 +12,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <script
-        src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
-        crossOrigin="anonymous"
-      ></script>
-      <Script src="/script.js" />
       <Overview />
     </>
   );

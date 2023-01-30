@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 export default function PokemonDetails() {
   return (
     <div className="pokemon-details-container">
@@ -99,7 +101,8 @@ export default function PokemonDetails() {
         </div>
       </div>
       <a href="/" className="back-to-home">
-        Back To Home
+        <FontAwesomeIcon icon={faHome} />
+        <span>Back To Home</span>
       </a>
     </div>
   );
