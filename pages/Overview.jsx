@@ -1,5 +1,9 @@
 import Card from "./Card";
-import PokemonDetails from "./PokemonDetails";
+import PokemonDetails from "./PokemonDetails/[PokemonDetails]";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import Script from "next/script";
 export default function Overview() {
   return (
     <>
@@ -8,7 +12,7 @@ export default function Overview() {
           <div className="logoContainer">
             <img src="/Logo/Logo.png" alt="" />
           </div>
-          <div className="cardContainer">
+          <OwlCarousel className="cardContainer owl-theme">
             <Card />
             <Card />
             <Card />
@@ -19,7 +23,7 @@ export default function Overview() {
             <Card />
             <Card />
             <Card />
-          </div>
+          </OwlCarousel>
         </div>
       </div>
 
@@ -48,48 +52,26 @@ export default function Overview() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eveniet
             praesentium voluptate consectetur, architecto ad aliquam quidem
             soluta ullam dicta exercitationem nam excepturi natus, numquam
-            laboriosam? Molestiae iusto culpa quo, eos veritatis cupiditate
-            delectus id, in minima rem modi! Quas, velit eos! Ea dolore
-            assumenda adipisci laboriosam repellendus debitis ad voluptates
-            fugiat dicta totam commodi modi placeat itaque aliquid possimus
-            blanditiis vitae ipsam laborum ex, numquam fuga architecto! Eos a
-            perspiciatis numquam suscipit odio sint alias maxime dolores beatae
-            ab.
+            laboriosam? Molestiae iusto culpa quo,
           </div>
           <div className="blog-text text-4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eveniet
             praesentium voluptate consectetur, architecto ad aliquam quidem
             soluta ullam dicta exercitationem nam excepturi natus, numquam
-            laboriosam? Molestiae iusto culpa quo, eos veritatis cupiditate
-            delectus id, in minima rem modi! Quas, velit eos! Ea dolore
-            assumenda adipisci laboriosam repellendus debitis ad voluptates
-            fugiat dicta totam commodi modi placeat itaque aliquid possimus
-            blanditiis vitae ipsam laborum ex,
+            laboriosam?
           </div>
           <div className="blog-text text-5">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
             doloribus esse hic aspernatur possimus mollitia, quia labore
             voluptatibus nesciunt praesentium consequuntur quos accusamus!
-            Debitis consequuntur similique a excepturi adipisci eos fuga
-            praesentium architecto atque natus labore ipsam delectus, magnam
-            officia id corporis corrupti illum placeat, soluta cum. Ea nostrum
-            sit voluptatibus reiciendis, consequatur id reprehenderit dolores
-            quia optio, molestiae debitis magni provident repellat sequi
-            corrupti quas, voluptatem ducimus sed. Distinctio, molestias
-            voluptates corporis cumque inventore doloribus pariatur nemo
-            expedita ipsum. Consequatur enim consectetur ratione aut eaque cum
+            Debitis consequuntur similique a consectetur, architecto ad aliquam
+            quidem soluta ullam
           </div>
           <div className="blog-text text-6">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eveniet
             praesentium voluptate consectetur, architecto ad aliquam quidem
             soluta ullam dicta exercitationem nam excepturi natus, numquam
-            laboriosam? Molestiae iusto culpa quo, eos veritatis cupiditate
-            delectus id, in minima rem modi! Quas, velit eos! Ea dolore
-            assumenda adipisci laboriosam repellendus debitis ad voluptates
-            fugiat dicta totam commodi modi placeat itaque aliquid possimus
-            blanditiis vitae ipsam laborum ex, numquam fuga architecto! Eos a
-            perspiciatis numquam suscipit odio sint alias maxime dolores beatae
-            ab.
+            laboriosam?
           </div>
           <div className="blog-text text-7">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
@@ -136,7 +118,6 @@ export default function Overview() {
           </div>
         </div>
       </div>
-      <PokemonDetails />
     </>
   );
 }

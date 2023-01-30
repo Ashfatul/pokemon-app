@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 function Card() {
   return (
     <a href="/details" className="singlePokemonDetails">

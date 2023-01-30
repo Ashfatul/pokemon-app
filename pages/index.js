@@ -1,6 +1,11 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-import Overview from "./Overview";
+// import Overview from "./Overview";
+
+import dynamic from "next/dynamic";
+import Script from "next/script";
+
+const Overview = dynamic(() => import("./Overview"), { ssr: false });
 
 export default function Home() {
   return (
@@ -11,6 +16,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <script
+        src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+        crossOrigin="anonymous"
+      ></script>
+      <Script src="/script.js" />
       <Overview />
     </>
   );
