@@ -249,21 +249,22 @@ p.pokemon-number {
   margin-top: 30px;
 }
 .details-area {
-  display: grid;
-  grid-template-columns: repeat(3, 30% 40% 30%);
   margin-top: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* .details-area > * {
-  flex-basis: 33.33333%;
-} */
+.details-area > * {
+  flex-basis: calc(33.333% - 20px);
+  padding: 10px;
+}
 
 .other-details table {
   width: 90%;
   text-align: center;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
   border: 5px solid transparent;
-  padding: 50px;
   margin-top: 65px;
   border-radius: 8px;
   border-image: linear-gradient(90deg, #fc7c23, #f366b9);
@@ -294,18 +295,22 @@ table.details-table td {
 .photo {
   text-align: center;
 }
-.photo {
-  text-align: center;
+
+.photo img {
+  max-width: 475px;
+  width: 100%;
 }
 
 .power-list-container {
   display: flex;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .power-list-container .power,
 .weekness-details .weekness {
   padding: 10px 0px;
+  margin-bottom: 5px;
 }
 
 .power-title,
@@ -356,7 +361,11 @@ table.details-table td {
   margin: auto;
   margin-top: 70px;
 }
-
+/* @media (max-width: 1400px){
+  .photo img{
+    width: ;
+  }
+} */
 @media (max-width: 1280px) {
   .text-3,
   .text-4,
@@ -377,6 +386,10 @@ table.details-table td {
       "text-2 text-2 text-2 text-2 text-2 text-2 text-2 ";
     row-gap: 20px;
   }
+  .details-area > * {
+    flex-basis: calc(50% - 20px);
+    margin-bottom: 50px;
+  }
   .img-2,
   .img-3 {
     margin-top: 100px;
@@ -394,6 +407,15 @@ table.details-table td {
   }
   .img-2,
   .img-3 {
+    margin-top: 50px;
+  }
+  .details-area > * {
+    flex-basis: calc(100% - 20px);
+  }
+  .other-details table {
+    width: 100%;
+  }
+  .details-area {
     margin-top: 50px;
   }
 }

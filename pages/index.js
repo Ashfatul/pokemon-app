@@ -1,10 +1,11 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
-// import Overview from "./Overview";
 
 import dynamic from "next/dynamic";
 import Script from "next/script";
 
+// dynamic(() => import("../node_modules/owl.carousel/dist/owl.carousel"), {
+//   ssr: false,
+// });
 const Overview = dynamic(() => import("./Overview"), { ssr: false });
 
 export default function Home() {

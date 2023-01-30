@@ -1,6 +1,6 @@
 function Card() {
   return (
-    <a href="/details" className="singlePokemonDetails">
+    <a href="/PokemonDetails/:pokemonID" className="singlePokemonDetails">
       <div className="singlePokemon">
         <p className="pokemon-number">#015</p>
         <div className="pokemon-img-container">
