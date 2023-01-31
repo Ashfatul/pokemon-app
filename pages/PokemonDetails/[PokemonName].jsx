@@ -100,7 +100,7 @@ export default function PokemonDetails() {
           </div>
         </div>
         <div className="photo">
-          <img src="" alt="" />
+          <img src="https://picsum.photos/475" alt="" />
         </div>
 
         <div className="right-info">
