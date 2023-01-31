@@ -50,14 +50,11 @@ export default function PokemonDetails() {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           setpokemonData(res.data.pokemon);
         })
         .catch((err) => console.log(err));
     }
   }, [PokemonName]);
-
-  console.log(pokemonData);
 
   return (
     <div className="pokemon-details-container">
