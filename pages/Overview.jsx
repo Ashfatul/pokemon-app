@@ -1,7 +1,45 @@
 import Card from "./Card";
-import PokemonDetails from "./PokemonDetails/[PokemonID]";
+import PokemonDetails from "./PokemonDetails/[PokemonName]";
 import Script from "next/script";
+import { useEffect, useState } from "react";
 export default function Overview() {
+  const [pokemonData, setpokemonData] = useState([]);
+
+  useEffect(() => {
+    const gqlQuery = `query pokemons($limit: Int, $offset: Int) {
+    pokemons(limit: $limit, offset: $offset) {
+      count
+      next
+      previous
+      status
+      message
+      results {
+        id
+        url
+        name
+        image
+      }
+    }
+  }`;
+
+    const gqlVariables = {
+      limit: 10,
+      offset: 0,
+    };
+
+    fetch("https://graphql-pokeapi.graphcdn.app/", {
+      credentials: "omit",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: gqlQuery,
+        variables: gqlVariables,
+      }),
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((res) => setpokemonData(res.data.pokemons.results));
+  }, []);
+
   return (
     <>
       <div className="texture">
@@ -10,16 +48,9 @@ export default function Overview() {
             <img src="/Logo/Logo.png" alt="" />
           </div>
           <div className="cardContainer">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {pokemonData.map((data) => (
+              <Card data={data} key={data.id} />
+            ))}
           </div>
         </div>
       </div>
@@ -115,6 +146,8 @@ export default function Overview() {
           </div>
         </div>
       </div>
+
+      <script src="/script.js"></script>
     </>
   );
 }

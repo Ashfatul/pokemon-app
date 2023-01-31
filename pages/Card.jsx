@@ -1,15 +1,35 @@
-function Card() {
+import { useEffect, useState } from "react";
+
+function Card(props) {
+  const pokemonInfo = props.data;
+  const [types, settypes] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/type/${pokemonInfo.id}`)
+      .then((response) => response.json())
+      .then((res) =>
+        settypes(res.damage_relations.double_damage_to.splice(0, 2))
+      )
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(types);
+
   return (
-    <a href="/PokemonDetails/:pokemonID" className="singlePokemonDetails">
+    <a
+      href={`/PokemonDetails/${pokemonInfo.name}`}
+      className="singlePokemonDetails"
+    >
       <div className="singlePokemon">
-        <p className="pokemon-number">#015</p>
+        <p className="pokemon-number">#{pokemonInfo.id}</p>
         <div className="pokemon-img-container">
-          <img src="https://picsum.photos/215" className="pokemonImg" alt="" />
+          <img src={pokemonInfo.image} className="pokemonImg" alt="" />
         </div>
-        <p className="pokemonName">Google</p>
+        <p className="pokemonName">{pokemonInfo.name}</p>
         <div className="pokemonPowerContainer">
-          <p>Fire</p>
-          <p>Water</p>
+          {types.map((type) => (
+            <p key={type.name}>{type.name}</p>
+          ))}
         </div>
       </div>
     </a>
