@@ -13,8 +13,6 @@ function Card(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(types);
-
   return (
     <a
       href={`/PokemonDetails/${pokemonInfo.name}`}

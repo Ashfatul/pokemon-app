@@ -6,49 +6,6 @@ export default function PokemonDetails() {
   let PokemonName = useRouter();
   PokemonName = PokemonName.query.PokemonName;
 
-  const [pokemonDetails, setpokemonDetails] = useState([]);
-
-  // useEffect(() => {
-  const Query = `query pokemon($name: String!) {
-      pokemon(name: $name) {
-        id
-        name
-        abilities {
-          ability {
-            name
-          }
-        }
-        moves {
-          move {
-            name
-          }
-        }
-        types {
-          type {
-            name
-          }
-        }
-        message
-        status
-      }
-    }`;
-
-  const name = {
-    name: PokemonName,
-  };
-
-  fetch("https://graphql-pokeapi.graphcdn.app/", {
-    credentials: "omit",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: Query,
-      variables: name,
-    }),
-    method: "POST",
-  })
-    .then((res) => res.json())
-    .then((res) => setpokemonDetails(res));
-
   return (
     <div className="pokemon-details-container">
       <div className="logoContainer">
@@ -57,9 +14,8 @@ export default function PokemonDetails() {
       <div className="details-area">
         <div className="left-info">
           <h1 className="pokemon-name">
-            {pokemonDetails.data?.pokemon.name}
+            {PokemonName}
             {" #"}
-            {pokemonDetails.data?.pokemon.id}
           </h1>
           <p className="pokemon-details">
             There is a plant seed on its back right from the day this Pokémon is
@@ -93,7 +49,7 @@ export default function PokemonDetails() {
           </div>
         </div>
         <div className="photo">
-          <img src={pokemonDetails.data?.pokemon?.image} alt="" />
+          <img src="" alt="" />
         </div>
 
         <div className="right-info">
