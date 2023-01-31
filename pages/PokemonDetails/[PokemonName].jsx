@@ -4,7 +4,60 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 export default function PokemonDetails() {
   let PokemonName = useRouter();
-  PokemonName = PokemonName.query.PokemonName;
+  PokemonName = PokemonName?.query?.PokemonName;
+
+  const [pokemonData, setpokemonData] = useState([]);
+  useEffect(() => {
+    if (PokemonName !== undefined) {
+      const query = `
+      query pokemon($name: String!) {
+        pokemon(name: $name) {
+          id
+          name
+          abilities {
+            ability {
+              name
+            }
+          }
+          moves {
+            move {
+              name
+            }
+          }
+          types {
+            type {
+              name
+            }
+          }
+          message
+          status
+        }
+      }
+      `;
+
+      const gqlVariables = {
+        name: PokemonName,
+      };
+
+      fetch("https://graphql-pokeapi.graphcdn.app/", {
+        credentials: "omit",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: query,
+          variables: gqlVariables,
+        }),
+        method: "POST",
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          setpokemonData(res.data.pokemon);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [PokemonName]);
+
+  console.log(pokemonData);
 
   return (
     <div className="pokemon-details-container">
@@ -16,6 +69,7 @@ export default function PokemonDetails() {
           <h1 className="pokemon-name">
             {PokemonName}
             {" #"}
+            {pokemonData?.id}
           </h1>
           <p className="pokemon-details">
             There is a plant seed on its back right from the day this Pokémon is
@@ -56,8 +110,11 @@ export default function PokemonDetails() {
           <div className="type-details">
             <h4 className="power-title">Types</h4>
             <div className="power-list-container">
-              <p className="power">Grass</p>
-              <p className="power">Poison</p>
+              {pokemonData?.types?.map((type) => (
+                <p className="power" key={type.type.name}>
+                  {type.type.name}
+                </p>
+              ))}
             </div>
           </div>
 
